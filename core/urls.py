@@ -6,3 +6,9 @@ router = DefaultRouter()
 
 router.register("auth", AuthViewset, basename="auth")
 # router.register("profile", ProfileViewset, basename="profile")
+
+urlpatterns = [
+    # path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+]
+
+urlpatterns += router.urls
