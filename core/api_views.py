@@ -1,0 +1,4 @@
+
+
+class AuthViewset():
+    pass
