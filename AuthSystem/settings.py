@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = "core.User"
 
 # Application definition
 
@@ -37,8 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    'rest_framework',
+    'drf_yasg',
+    
 ]
+
+AUTH_USER_MODEL = "core.Users"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,3 +136,63 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Define Additional settings below here
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    "DEFAULT_PAGINATION_CLASS": "core.pagination.MetadataPagination",
+    "PAGE_SIZE": 100,
+}
+
+LOGS_DIR = os.path.join(BASE_DIR, "logs")
+
+
+try:
+    os.mkdir(LOGS_DIR)
+except:
+    pass
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "standard": {
+            "format": "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s - %(pathname)s",
+            "datefmt": "%d/%b/%Y %H:%M:%S",
+        }
+    },
+    "handlers": {
+        "default": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": os.path.join(LOGS_DIR, "default.log"),
+            "formatter": "standard",
+        },
+        "handler_error": {
+            "level": "ERROR",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(LOGS_DIR, "error.log"),
+            "formatter": "standard",
+        },
+        "console": {"class": "logging.StreamHandler", "formatter": "standard"},
+        "celery": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": os.path.join(LOGS_DIR, "celery.log"),
+            "formatter": "standard",
+        },
+    },
+    "loggers": {
+        "django": {"handlers": ["handler_error"], "level": "ERROR", "propagate": True},
+        "": {"handlers": ["default", "console"], "level": "DEBUG", "propagate": True},
+        "celery": {
+            "handlers": ["celery", "console"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+    },
+}
