@@ -98,3 +98,603 @@ Traceback (most recent call last):
   File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
     assert self.serializer_class is not None, (
 AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:11:45] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:20:20] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[19/May/2022 15:20:20] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[19/May/2022 15:20:20] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[19/May/2022 15:20:20] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[19/May/2022 15:20:21] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:20:21] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:20:21] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:20:21] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:20:21] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:20:21] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:20:21] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[19/May/2022 15:20:21] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 08:19:31] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:11:17] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:12:02] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 63, in get_queryset
+    assert self.queryset is not None, (
+AssertionError: 'AuthViewset' should either include a `queryset` attribute, or override the `get_queryset()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 11:19:35] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
