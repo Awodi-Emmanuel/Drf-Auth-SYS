@@ -50,7 +50,7 @@ class SignupInputSerializer(Serializer):
     
     
     def create_user(self, *arg):
-        username = self.validatad_data["username"]
+        username = self.validated_data["username"]
         email = self.validated_data["email"]
         phone = self.validated_data["phone"]
         first_name = self.validated_data["first_name"]

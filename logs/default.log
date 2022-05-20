@@ -698,3 +698,4 @@ Traceback (most recent call last):
   File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
     assert self.serializer_class is not None, (
 AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[20/May/2022 12:52:54] ERROR [root:74] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
