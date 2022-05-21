@@ -1,3 +1,4 @@
+from email import message
 import logging
 import traceback
 
@@ -23,10 +24,9 @@ from rest_framework.mixins import (
     RetrieveModelMixin,
 )
 
-from core.models import Users, TempCode
+from core.models import TempCode
 
 from rest_framework.decorators import action
-import traceback
 from django.db.models import Q
 from drf_yasg import openapi  # type: ignore
 from drf_yasg.utils import swagger_auto_schema  # type: ignore
@@ -43,11 +43,14 @@ from core.responses_serializers import (
     EmptySerializer,
     NotFoundResponseSerializer,
 )    
+from AuthSystem import settings
 from core.custom_classes import YkGenericViewSet
 from core.errors import BadRequestError, NotFoundError
 from .input_serializer import (
     SignupInputSerializer
 )
+
+from utils import base, crypt
 
 logger = logging.getLogger()
 
@@ -71,7 +74,40 @@ class AuthViewset(YkGenericViewSet):
                 if not user.is_active:
                    code = "12345"
                    code_otp = "546387"
+                   fe_url = settings.FRONTEND_URL
+                   TempCode.objects.create(code=code, user=user, type="signup")
+                   TempCode.objects.create(code=code_otp, user=user, type="signup_otp")
+                   confirm_url = (
+                       fe_url
+                       + f"/confirm?code={crypt.encrypt(code)}&firstname={crypt.encrypt(user.first_name)}&lastname={crypt.encrypt(user.last_name)}&email={crypt.encrypt(user.email)}"
+                   )
+                   message = {
+                       "subject": _("Confirm Your Email"),
+                       "email": user.email,
+                       "confirm_url": confirm_url,
+                       "username": user.username,
+                   }
+                   # TODO:  Apache Kafka
+                   
+                   message = {
+                       "subject": _("Confirm Your Email"),
+                       "phone": user.phone_number,
+                       "code": code_otp,
+                       "username": user.username,
+                   }
+                   # TODO:  Apache Kafka
+                
+                return CreatedResponse({"message": "user created"})
             
+            else:
+                return BadRequestResponse(
+                    "unable to signup", 
+                    "signup_error", 
+                    data=rcv_ser._errors, 
+                    request=self.request
+                )
+                
+               
         except Exception as e:
             logger.error(traceback.print_exc())
             return BadRequestResponse(str(e), code="unknown", request=self.request)

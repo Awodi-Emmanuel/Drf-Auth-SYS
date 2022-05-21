@@ -1,5 +1,6 @@
+from .implementation import TempCode
 from .abstraction import Users 
-from .abstraction import TempCode
+
 
 __all__ = (
     "Users",
