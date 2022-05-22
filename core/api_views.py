@@ -47,7 +47,12 @@ from AuthSystem import settings
 from core.custom_classes import YkGenericViewSet
 from core.errors import BadRequestError, NotFoundError
 from .input_serializer import (
-    SignupInputSerializer
+    SignupInputSerializer,
+    ConfirmInputSerializer
+)
+
+from .model_serializer import (
+    UserSerializer
 )
 
 from utils import base, crypt
@@ -111,5 +116,66 @@ class AuthViewset(YkGenericViewSet):
         except Exception as e:
             logger.error(traceback.print_exc())
             return BadRequestResponse(str(e), code="unknown", request=self.request)
+        
+    @swagger_auto_schema(
+        operation_summary="Confirm",
+        operation_description="Confirm your email",
+        responses={
+            200: EmptySerializer(),
+            400:BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+            },
+        request_body=ConfirmInputSerializer()
+    )    
+    @action(methods=["POST"], detail=False)
+    
+    def confirm(self, request, *args, **kwargs):
+        try:
+            rcv_ser = ConfirmInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                print(crypt.encrypt(rcv_ser.validated_data["code"]))
+                tmp_code = (
+                    TempCode.objects.filter(
+                        code=crypt.encrypt(rcv_ser.validated_data["code"]),
+                        user__email=crypt.encrypt(
+                            rcv_ser.validated_data["email"]
+                        ),
+                        is_used = False,
+                        expires__gte=timezone.now(),
+                    )
+                    .select_related()
+                    .first()
+                )
+                if tmp_code:
+                    tmp_code.user.email_is_verified = True
+                    tmp_code.user.save()
+                    tmp_code.is_used = True
+                    tmp_code.save()
+                    user_ser = UserSerializer(tmp_code.user)
+                    
+                    message = {
+                        "subject": _("Welcome To Testing"),
+                        "email": tmp_code.user.email,
+                        "username": tmp_code.user.username,
+                    }
+                    
+                    # TODO Apache Kafka
+                    
+                    return GoodResponse(user_ser.data)
+                else:
+                    return NotFoundResponse(
+                        "TempCode not found or invalid",
+                        "TempCode",
+                        request=self.request
+                    )
+            else:
+                return BadRequestResponse(
+                    "Unable to confirm",
+                    "confirm_error",
+                    request=self.request,
+                )        
+        except Exception as e:
+            logger.error(traceback.print_exc())
+            return BadRequestResponse(str(e), "unknown", request=self.request)      
     
         

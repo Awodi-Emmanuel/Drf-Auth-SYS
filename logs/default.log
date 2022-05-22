@@ -701,3 +701,7 @@ AssertionError: 'AuthViewset' should either include a `serializer_class` attribu
 [20/May/2022 12:52:54] ERROR [root:74] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
 [21/May/2022 08:23:19] ERROR [root:85] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
 [21/May/2022 12:46:05] ERROR [root:112] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[22/May/2022 10:12:07] ERROR [root:149] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[22/May/2022 10:12:57] ERROR [root:151] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[22/May/2022 10:13:53] ERROR [root:151] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[22/May/2022 10:13:53] ERROR [root:151] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
