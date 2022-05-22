@@ -150,6 +150,8 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 100,
 }
 
+FRONTEND_URL = "http://testin.ng"
+
 LOGS_DIR = os.path.join(BASE_DIR, "logs")
 
 

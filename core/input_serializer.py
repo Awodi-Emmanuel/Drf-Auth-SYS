@@ -1,3 +1,5 @@
+from email import charset
+from weakref import ref
 from rest_framework.serializers import Serializer, ValidationError
 from rest_framework.fields import *
 from django.contrib.auth import get_user_model
@@ -86,4 +88,11 @@ class SignupInputSerializer(Serializer):
                 user.save()
             else:
                 raise ValidationError("This invite code is invalid")
-        return user        
+        return user  
+    
+class ConfirmInputSerializer(Serializer):
+    email = EmailField()
+    code = CharField()
+    
+    class Meta:
+        ref_name = None          
