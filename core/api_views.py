@@ -1,4 +1,4 @@
-from email import message
+from asyncio import exceptions
 import logging
 import traceback
 
@@ -16,13 +16,13 @@ from django.utils.translation import gettext as _
 from uuid import uuid4
 from datetime import timedelta, datetime
 from rest_framework.viewsets import ViewSet, ModelViewSet, GenericViewSet
-from rest_framework.mixins import (
-    ListModelMixin,
-    UpdateModelMixin,
-    DestroyModelMixin,
-    CreateModelMixin,
-    RetrieveModelMixin,
-)
+# from rest_framework.mixins import (
+#     ListModelMixin,
+#     UpdateModelMixin,
+#     DestroyModelMixin,
+#     CreateModelMixin,
+#     RetrieveModelMixin,
+# )
 
 from core.models import TempCode
 
@@ -48,7 +48,8 @@ from core.custom_classes import YkGenericViewSet
 from core.errors import BadRequestError, NotFoundError
 from .input_serializer import (
     SignupInputSerializer,
-    ConfirmInputSerializer
+    ConfirmInputSerializer,
+    ValidateOTPInputSerializer,
 )
 
 from .model_serializer import (
@@ -77,7 +78,7 @@ class AuthViewset(YkGenericViewSet):
             if rcv_ser.is_valid():
                 user = rcv_ser.create_user()
                 if not user.is_active:
-                   code = "12345"
+                   code = "12345" # TODO: Create and add code generation function
                    code_otp = "546387"
                    fe_url = settings.FRONTEND_URL
                    TempCode.objects.create(code=code, user=user, type="signup")
@@ -86,13 +87,15 @@ class AuthViewset(YkGenericViewSet):
                        fe_url
                        + f"/confirm?code={crypt.encrypt(code)}&firstname={crypt.encrypt(user.first_name)}&lastname={crypt.encrypt(user.last_name)}&email={crypt.encrypt(user.email)}"
                    )
+                   
+                   
                    message = {
                        "subject": _("Confirm Your Email"),
                        "email": user.email,
                        "confirm_url": confirm_url,
                        "username": user.username,
                    }
-                   # TODO:  Apache Kafka
+                   # TODO: Create Apache Kafka
                    
                    message = {
                        "subject": _("Confirm Your Email"),
@@ -100,7 +103,7 @@ class AuthViewset(YkGenericViewSet):
                        "code": code_otp,
                        "username": user.username,
                    }
-                   # TODO:  Apache Kafka
+                   # TODO: Create  Apache Kafka
                 
                 return CreatedResponse({"message": "user created"})
             
@@ -178,4 +181,32 @@ class AuthViewset(YkGenericViewSet):
             logger.error(traceback.print_exc())
             return BadRequestResponse(str(e), "unknown", request=self.request)      
     
+    
+    @swagger_auto_schema(
+        operation_summary="Validate OTP",
+        operation_description="Validate the OTP",
+        responses={200: GoodResponse(), 400:BadRequestResponseSerializer()},
+        request_body=ValidateOTPInputSerializer(),
+    )
+
+    @action(methods=["POST"], detail=False, url_path="validate/otp")
+    
+    def validate_otp(self, *args, **kwargs):
+        try:
+            rcv_ser = ValidateOTPInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                tmp_code = (
+                    TempCode.objects.filter(
+                        code=base.url_safe_decode(rcv_ser.validated_data["otp"]),
+                        email=base.url_safe_decode(rcv_ser.validated_data["email"]),
+                    is_used=False,
+                    expires__gte=timezone.now(),    
+                    )
+                    .select_related()
+                    .first()
+                )
+                print(tmp_code)
+            
+        except exceptions as e:
+            raise e      
         

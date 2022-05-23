@@ -705,3 +705,46 @@ AssertionError: 'AuthViewset' should either include a `serializer_class` attribu
 [22/May/2022 10:12:57] ERROR [root:151] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
 [22/May/2022 10:13:53] ERROR [root:151] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
 [22/May/2022 10:13:53] ERROR [root:151] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[22/May/2022 12:08:43] ERROR [root:117] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[23/May/2022 10:44:48] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[23/May/2022 10:44:48] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[23/May/2022 10:44:48] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[23/May/2022 10:44:48] WARNING [drf_yasg.inspectors.base:44] view's AuthViewset raised exception during schema generation; use `getattr(self, 'swagger_fake_view', False)` to detect and short-circuit this - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/inspectors/base.py", line 42, in call_view_method
+    return view_method()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[23/May/2022 10:55:57] ERROR [root:120] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[23/May/2022 11:01:57] ERROR [root:120] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[23/May/2022 11:11:14] ERROR [root:120] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[23/May/2022 11:17:32] ERROR [root:120] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[23/May/2022 14:04:24] ERROR [root:117] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
+[23/May/2022 14:11:13] ERROR [root:118] None - /var/www/html/emmy/Drf-Auth-SYS/core/api_views.py
