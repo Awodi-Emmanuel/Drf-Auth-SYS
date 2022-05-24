@@ -54,7 +54,8 @@ from .input_serializer import (
     ConfirmInputSerializer,
     ValidateOTPInputSerializer,
     ResendOTPInputSerializer,
-    ResendCodeInputSerializer
+    ResendCodeInputSerializer,
+    SigninInputSerializer,
 )
 
 from .model_serializer import (
@@ -375,4 +376,25 @@ class AuthViewset(YkGenericViewSet):
                 )
             
         except Exception as e:
-            return BadRequestResponse(str(e), "unknow", request=self.request)    
+            return BadRequestResponse(str(e), "Unknown", request=self.request) 
+        
+    @swagger_auto_schema(
+        operation_summary="Signin",
+        operation_description="Sign in",
+        responses={
+            200: EmptySerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_body=SigninInputSerializer(),
+    )
+    
+    @action(methods=["POST"], detail=False)
+    
+    def signin(self, request, *args, Kwargs):
+        try:
+            rcv_ser = SigninInputSerializer
+        except Exception as e:
+            return BadRequestResponse(str(e), "Unknown", request=self.request)
+            
+               
