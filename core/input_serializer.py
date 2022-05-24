@@ -1,22 +1,23 @@
-from email import charset
-from weakref import ref
-from rest_framework.serializers import Serializer, ValidationError
-from rest_framework.fields import *
-from django.contrib.auth import get_user_model
-from django.core.validators import validate_email as dj_validate_email
-from django.utils.translation import gettext as _
-from django.db.models import Q
-from django.contrib.auth.models import AbstractBaseUser
+from datetime import datetime, timedelta
 from typing import Union
-from core.models import TempCode
-from django.utils import timezone
-
 from uuid import uuid4
-from datetime import timedelta, datetime
-from django.utils import timezone
-import pytz
 
-User: AbstractBaseUser = get_user_model()
+import pytz
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import AbstractBaseUser
+from django.core.validators import validate_email as dj_validate_email
+from django.db.models import Q
+from django.utils import timezone
+from django.utils.translation import gettext as _
+from rest_framework.fields import *
+from rest_framework.serializers import Serializer, ValidationError
+
+
+
+from core.models import TempCode
+
+User = get_user_model()
+
 
 class SignupInputSerializer(Serializer):
     username = CharField()
@@ -25,25 +26,28 @@ class SignupInputSerializer(Serializer):
     email = EmailField()
     phone = CharField()
     password = CharField()
-    invite_code = CharField(required=False)    
+    invite_code = CharField(required=False)  
+    
+      
     class Meta:
         ref_name = None
         
     def validate_username(self, *args):
         username = self.initial_data["username"]
         u = User.objects.filter(username=username).first()
-        # if u and u.date_joined >= datetime(2022, 1, 1, tzinfo=pytz.UTC):
         if u:
-            raise ValidationError("This username is alreday used.")
+        #and u.date_joined >= datetime(2020, 1, 1, tzinfo=pytz.UTC):
+            
+            raise ValidationError("This username is already used.")
         return username
     
     def validate_email(self, args):
         email = self.initial_data["email"]
         try:
             dj_validate_email(email)    
-            u = User.objects.filter(email=email).first()
+            user = User.objects.filter(email=email).first()
             # if u and u.date_joined >= datetime(2022, 1, 1, tzinfo=pytz.UTC):
-            if u:
+            if user:
                 raise ValidationError("This email is already used.")
         except ValidationError as e:
             raise e 
@@ -84,8 +88,12 @@ class SignupInputSerializer(Serializer):
                     user.set_password(password)
                 if username:
                     user.username = username
+                user.is_active = True    
                 user.date_joined = datetime.utcnow()
                 user.save()
+                
+                tmp_code.is_used = True
+                tmp_code.save()
             else:
                 raise ValidationError("This invite code is invalid")
         return user  
@@ -95,4 +103,18 @@ class ConfirmInputSerializer(Serializer):
     code = CharField()
     
     class Meta:
-        ref_name = None          
+        ref_name = None   
+        
+class ValidateOTPInputSerializer(Serializer):
+    email = EmailField(),
+    otp = CharField()
+    
+    class Meta:
+        ref_name = None
+                   
+class ResendOTPInputSerializer(Serializer):
+    email = EmailField()
+        
+    
+    class Meta:
+        ref_name = None               

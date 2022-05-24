@@ -1,6 +1,9 @@
+from asyncio import exceptions
 from email import message
 import logging
 import traceback
+
+from requests import request
 
 from core.pagination import MetadataPagination, MetadataPaginatorInspector
 from django.utils.decorators import method_decorator
@@ -16,13 +19,13 @@ from django.utils.translation import gettext as _
 from uuid import uuid4
 from datetime import timedelta, datetime
 from rest_framework.viewsets import ViewSet, ModelViewSet, GenericViewSet
-from rest_framework.mixins import (
-    ListModelMixin,
-    UpdateModelMixin,
-    DestroyModelMixin,
-    CreateModelMixin,
-    RetrieveModelMixin,
-)
+# from rest_framework.mixins import (
+#     ListModelMixin,
+#     UpdateModelMixin,
+#     DestroyModelMixin,
+#     CreateModelMixin,
+#     RetrieveModelMixin,
+# )
 
 from core.models import TempCode
 
@@ -48,7 +51,9 @@ from core.custom_classes import YkGenericViewSet
 from core.errors import BadRequestError, NotFoundError
 from .input_serializer import (
     SignupInputSerializer,
-    ConfirmInputSerializer
+    ConfirmInputSerializer,
+    ValidateOTPInputSerializer,
+    ResendOTPInputSerializer,
 )
 
 from .model_serializer import (
@@ -77,7 +82,7 @@ class AuthViewset(YkGenericViewSet):
             if rcv_ser.is_valid():
                 user = rcv_ser.create_user()
                 if not user.is_active:
-                   code = "12345"
+                   code = "12345" # TODO: Create and add code generation function
                    code_otp = "546387"
                    fe_url = settings.FRONTEND_URL
                    TempCode.objects.create(code=code, user=user, type="signup")
@@ -86,13 +91,15 @@ class AuthViewset(YkGenericViewSet):
                        fe_url
                        + f"/confirm?code={crypt.encrypt(code)}&firstname={crypt.encrypt(user.first_name)}&lastname={crypt.encrypt(user.last_name)}&email={crypt.encrypt(user.email)}"
                    )
+                   
+                   
                    message = {
                        "subject": _("Confirm Your Email"),
                        "email": user.email,
                        "confirm_url": confirm_url,
                        "username": user.username,
                    }
-                   # TODO:  Apache Kafka
+                   # TODO: Create Apache Kafka
                    
                    message = {
                        "subject": _("Confirm Your Email"),
@@ -100,7 +107,7 @@ class AuthViewset(YkGenericViewSet):
                        "code": code_otp,
                        "username": user.username,
                    }
-                   # TODO:  Apache Kafka
+                   # TODO: Create  Apache Kafka
                 
                 return CreatedResponse({"message": "user created"})
             
@@ -178,4 +185,118 @@ class AuthViewset(YkGenericViewSet):
             logger.error(traceback.print_exc())
             return BadRequestResponse(str(e), "unknown", request=self.request)      
     
+    
+    @swagger_auto_schema(
+        operation_summary="Validate OTP",
+        operation_description="Validate the OTP",
+        responses={200: GoodResponse(), 400:BadRequestResponseSerializer()},
+        request_body=ValidateOTPInputSerializer(),
+    )
+
+    @action(methods=["POST"], detail=False, url_path="validate/otp")
+    
+    def validate_otp(self, request, *args, **kwargs):
+        try:
+            rcv_ser = ValidateOTPInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                tmp_code = (
+                    TempCode.objects.filter(
+                        code=base.url_safe_decode(rcv_ser.validated_data["otp"]),
+                        email=base.url_safe_decode(rcv_ser.validated_data["email"]),
+                    is_used=False,
+                    expires__gte=timezone.now(),    
+                    )
+                    .select_related()
+                    .first()
+                )
+                if tmp_code:
+                    tmp_code.user.is_active = True
+                    tmp_code.user.save(),
+                    tmp_code.user.is_used = True
+                    tmp_code.save()
+                    user_ser = UserSerializer(tmp_code.user)
+                    return GoodResponse(user_ser.data)
+                
+                else: 
+                    return NotFoundResponse(
+                    "OTP not found or invalid", "OTP", request=self.request
+                )
+            else:
+                return BadRequestResponse(
+                    "Unable to validate OTP",
+                    "otp_validation_error",
+                    data=rcv_ser.errors,
+                    request=self.request,
+                )       
+            
+        except Exception as e:
+            return BadRequestResponse(str(e), "unknown", request=self.request)  
+        
+        
+        
+    @swagger_auto_schema(
+        operation_summary="Resend",
+        operation_description="Resend a code",
+        responses={
+            200: EmptySerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_body=ResendOTPInputSerializer(),
+    )
+    
+    @action(methods=["POST"], detail=False, url_path="resend/otp")
+    
+    def resend_otp(self, request, *args, **kwargs):
+        try:
+            rcv_ser = ResendOTPInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                
+                user = User.objects.filter(
+                    email=rcv_ser.validated_data["email"],
+                    is_active=False
+                ).first()
+                
+                if user:
+                    tmp_codes = TempCode.objects.filter(
+                        user__email=rcv_ser.validated_data["email"], 
+                        is_used=False,
+                        expires__gte=timezone.now(),
+                    ).select_related()
+                    
+                    tmp_codes.update(is_used=True)
+                    
+                    try:
+                        tmp_codes.save()
+                    except:
+                        pass
+                    
+                    code = "54321"
+                    TempCode.objects.create(code=code, user=user, type="resend_otp")
+                    
+                    message = {
+                        "email": user.email,
+                        "username": user.username,
+                    }
+                    
+                    return GoodResponse({"message": "OTP Sent"})
+                
+                    # TODO Create Apache Kafka Notification
+                    
+        
+                else:
+                    return NotFoundResponse(
+                        "User is active or User not found",
+                        "user_is_active",
+                        request=self.request,
+                    )   
+                
+            else:
+                return BadRequestResponse(
+                    "Invalid data sent",
+                    "invalid_data",
+                    request=self.request,
+                )
+        except Exception as e:
+            return BadRequestResponse(str(e), "unknown", request=self.request)  
         
