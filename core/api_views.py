@@ -54,7 +54,7 @@ from .input_serializer import (
     ConfirmInputSerializer,
     ValidateOTPInputSerializer,
     ResendOTPInputSerializer,
-    ResendConfirmEmailSerializer
+    ResendCodeInputSerializer
 )
 
 from .model_serializer import (
@@ -280,9 +280,9 @@ class AuthViewset(YkGenericViewSet):
                         "username": user.username,
                     }
                     
-                    return GoodResponse({"message": "OTP Sent"})
-                
                     # TODO Create Apache Kafka Notification
+                    
+                    return GoodResponse({"Confirmation email sent"})
                     
         
                 else:
@@ -296,6 +296,7 @@ class AuthViewset(YkGenericViewSet):
                 return BadRequestResponse(
                     "Invalid data sent",
                     "invalid_data",
+                    data=rcv_ser.errors,
                     request=self.request,
                 )
         except Exception as e:
@@ -310,14 +311,68 @@ class AuthViewset(YkGenericViewSet):
             400: BadRequestResponseSerializer(),
             404: NotFoundResponseSerializer(),
         },
-        request_body=ResendConfirmEmailSerializer(),
+        request_body=ResendCodeInputSerializer(),
     )     
     @action(methods=["POST"], detail=False)
     
     def resend(self, request, *args, **kwargs):
         try:
-            rcv_ser = ResendConfirmEmailSerializer(data=self.request.data)
+            rcv_ser = ResendCodeInputSerializer(data=self.request.data)
             if rcv_ser.is_valid():
-                print("HelLo")
+                user = self.request.user
+                if user.email_is_verified:
+                    return BadRequestResponse(
+                        "User is already activated",
+                        "user_is_active",
+                        data=rcv_ser.errors,
+                        request=self.request,
+                    )
+                tmp_codes = TempCode.objects.filter(
+                    user__email=rcv_ser.validated_data["email"],
+                    is_used = False,
+                    expires__gte = timezone.now(),
+                ).select_related()
+                    
+                code = "54672" 
+                fe_url = settings.FRONTEND_URL
+                TempCode.objects.filter(
+                    code=code, user=user, type="resend_confirmation"
+                )
+                
+                confirm_url = (
+                    fe_url
+                    + f"/confirm?code={base.url_safe_encode(code)}&firstname={base.url_safe_encode(user.first_name)}&lastname={base.url_safe_encode(user.last_name)}&email={base.url_safe_encode(user.email)}"
+                )
+                print(confirm_url)
+                    
+                message = {
+                    "subject": _("Confirm Your Email"),
+                    "email": self.request.user.email,
+                    "confirm_url": confirm_url,
+                    "username": self.request.user.username
+                }
+                    
+                # TODO Create Apache Kafka Notification
+                
+                tmp_codes.update(is_used=True)
+                    
+                try:
+                    tmp_codes.save()
+                except:
+                    pass
+                    
+                return GoodResponse({
+                    "Confirmation email sent",
+                        
+                })                        
+            
+            else:
+                return BadRequestResponse(
+                    "Invalid data sent",
+                    "invalid_data",
+                    data=rcv_ser.errors,
+                    request=self.request,
+                )
+            
         except Exception as e:
-            return BadRequestResponse(str("e"), "unknow", request=self.request)    
+            return BadRequestResponse(str(e), "unknow", request=self.request)    
