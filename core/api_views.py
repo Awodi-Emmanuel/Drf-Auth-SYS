@@ -54,6 +54,7 @@ from .input_serializer import (
     ConfirmInputSerializer,
     ValidateOTPInputSerializer,
     ResendOTPInputSerializer,
+    ResendConfirmEmailSerializer
 )
 
 from .model_serializer import (
@@ -298,5 +299,25 @@ class AuthViewset(YkGenericViewSet):
                     request=self.request,
                 )
         except Exception as e:
-            return BadRequestResponse(str(e), "unknown", request=self.request)  
+            return BadRequestResponse(str(e), "unknown", request=self.request) 
         
+        
+    @swagger_auto_schema(
+        operation_summary="Resend Email",
+        operation_description="Resend Confirmation Email",
+        responses={
+            200: EmptySerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_body=ResendConfirmEmailSerializer(),
+    )     
+    @action(methods=["POST"], detail=False)
+    
+    def resend(self, request, *args, **kwargs):
+        try:
+            rcv_ser = ResendConfirmEmailSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                print("HelLo")
+        except Exception as e:
+            return BadRequestResponse(str("e"), "unknow", request=self.request)    

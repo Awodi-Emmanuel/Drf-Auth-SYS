@@ -117,4 +117,10 @@ class ResendOTPInputSerializer(Serializer):
         
     
     class Meta:
-        ref_name = None               
+        ref_name = None 
+        
+class ResendConfirmEmailSerializer(Serializer):
+    email = EmailField()
+    
+    class Meta:
+        ref_name = None                      
