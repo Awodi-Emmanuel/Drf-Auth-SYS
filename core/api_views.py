@@ -233,4 +233,19 @@ class AuthViewset(YkGenericViewSet):
         
         
         
-   
+    @swagger_auto_schema(
+        operation_summary="Resend",
+        operation_description="Resend a code",
+        responses={
+            200: EmptySerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_body=ResendOTPInputSerializer(),
+    )
+    
+    @action(methods=["POST"], detail=False, url_path="resend/otp")
+    
+    def resend_otp(self, request, *args, **kwargs):
+        pass 
+        
