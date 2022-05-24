@@ -2,6 +2,8 @@ from asyncio import exceptions
 import logging
 import traceback
 
+from requests import request
+
 from core.pagination import MetadataPagination, MetadataPaginatorInspector
 from django.utils.decorators import method_decorator
 from django.utils import timezone
@@ -50,6 +52,7 @@ from .input_serializer import (
     SignupInputSerializer,
     ConfirmInputSerializer,
     ValidateOTPInputSerializer,
+    ResendOTPInputSerializer,
 )
 
 from .model_serializer import (
@@ -191,7 +194,7 @@ class AuthViewset(YkGenericViewSet):
 
     @action(methods=["POST"], detail=False, url_path="validate/otp")
     
-    def validate_otp(self, *args, **kwargs):
+    def validate_otp(self, request, *args, **kwargs):
         try:
             rcv_ser = ValidateOTPInputSerializer(data=self.request.data)
             if rcv_ser.is_valid():
@@ -205,8 +208,29 @@ class AuthViewset(YkGenericViewSet):
                     .select_related()
                     .first()
                 )
-                print(tmp_code)
+                if tmp_code:
+                    tmp_code.user.is_active = True
+                    tmp_code.user.save(),
+                    tmp_code.user.is_used = True
+                    tmp_code.save()
+                    user_ser = UserSerializer(tmp_code.user)
+                    return GoodResponse(user_ser.data)
+                
+                else: 
+                    return NotFoundResponse(
+                    "OTP not found or invalid", "OTP", request=self.request
+                )
+            else:
+                return BadRequestResponse(
+                    "Unable to validate OTP",
+                    "otp_validation_error",
+                    data=rcv_ser.errors,
+                    request=self.request,
+                )       
             
-        except exceptions as e:
-            raise e      
+        except Exception as e:
+            return BadRequestResponse(str(e), "unknown", request=self.request)  
         
+        
+        
+   
