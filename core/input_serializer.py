@@ -112,6 +112,9 @@ class ValidateOTPInputSerializer(Serializer):
     class Meta:
         ref_name = None
                    
-class ResendOTPInputSerialize(Serializer):
+class ResendOTPInputSerializer(Serializer):
     email = EmailField()
-    otp = CharField()                   
+        
+    
+    class Meta:
+        ref_name = None               

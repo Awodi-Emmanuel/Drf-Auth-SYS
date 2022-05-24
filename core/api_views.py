@@ -1,4 +1,5 @@
 from asyncio import exceptions
+from email import message
 import logging
 import traceback
 
@@ -247,5 +248,55 @@ class AuthViewset(YkGenericViewSet):
     @action(methods=["POST"], detail=False, url_path="resend/otp")
     
     def resend_otp(self, request, *args, **kwargs):
-        pass 
+        try:
+            rcv_ser = ResendOTPInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                
+                user = User.objects.filter(
+                    email=rcv_ser.validated_data["email"],
+                    is_active=False
+                ).first()
+                
+                if user:
+                    tmp_codes = TempCode.objects.filter(
+                        user__email=rcv_ser.validated_data["email"], 
+                        is_used=False,
+                        expires__gte=timezone.now(),
+                    ).select_related()
+                    
+                    tmp_codes.update(is_used=True)
+                    
+                    try:
+                        tmp_codes.save()
+                    except:
+                        pass
+                    
+                    code = "54321"
+                    TempCode.objects.create(code=code, user=user, type="resend_otp")
+                    
+                    message = {
+                        "email": user.email,
+                        "username": user.username,
+                    }
+                    
+                    return GoodResponse({"message": "OTP Sent"})
+                
+                    # TODO Create Apache Kafka Notification
+                    
+        
+                else:
+                    return NotFoundResponse(
+                        "User is active or User not found",
+                        "user_is_active",
+                        request=self.request,
+                    )   
+                
+            else:
+                return BadRequestResponse(
+                    "Invalid data sent",
+                    "invalid_data",
+                    request=self.request,
+                )
+        except Exception as e:
+            return BadRequestResponse(str(e), "unknown", request=self.request)  
         
