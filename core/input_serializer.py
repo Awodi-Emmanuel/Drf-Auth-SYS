@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from typing import Union
 from uuid import uuid4
+from pkg_resources import require
 
 import pytz
 from django.contrib.auth import get_user_model
@@ -98,6 +99,24 @@ class SignupInputSerializer(Serializer):
                 raise ValidationError("This invite code is invalid")
         return user  
     
+class SigninInputSerializer(Serializer):
+    email = EmailField(required=False, allow_null=True)
+    username = CharField(required=False, allow_null=True)
+    Password = CharField()    
+    
+    class Meta:
+        ref_name = None
+        
+    def validate_password(self, *args):
+        username = self.initial_data.get("username")
+        email = self.initial_data.get("email")
+        password = self.initial_data.get("password")
+        
+        if not email and not username:
+            raise ValidationError(_("(username or email) fields should be present.")) 
+        
+        return password  
+        
 class ConfirmInputSerializer(Serializer):
     email = EmailField()
     code = CharField()
@@ -123,4 +142,7 @@ class ResendCodeInputSerializer(Serializer):
     email = EmailField()
     
     class Meta:
-        ref_name = None                      
+        ref_name = None 
+        
+        
+                             

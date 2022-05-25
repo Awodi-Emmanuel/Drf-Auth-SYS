@@ -380,7 +380,7 @@ class AuthViewset(YkGenericViewSet):
         
     @swagger_auto_schema(
         operation_summary="Signin",
-        operation_description="Sign in",
+        operation_description="Sign in with your email",
         responses={
             200: EmptySerializer(),
             400: BadRequestResponseSerializer(),
@@ -391,10 +391,49 @@ class AuthViewset(YkGenericViewSet):
     
     @action(methods=["POST"], detail=False)
     
-    def signin(self, request, *args, Kwargs):
+    def signin(self, request, *args, **Kwargs):
         try:
-            rcv_ser = SigninInputSerializer
+            rcv_ser = SigninInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                email = rcv_ser.validated_data.get("email")
+                username = rcv_ser.validated_data.get("username")
+                password = rcv_ser.validated_data["password"]
+                user = User.objects.filter(
+                    Q(email=email) | Q(username=username)
+                ).first()
+                if user:
+                    if user.is_active:
+                        if user.check_password(password):
+                            cookie = UserSerializer().get_tokens(user)
+                            return GoodResponse(
+                                UserSerializer(user).data, cookie=cookie
+                            )
+                        else:
+                            return BadRequestResponse(
+                                "Invalid email/password credentials",
+                                "invalid_credentials",
+                                request=self.request,
+                            )
+                    else:
+                        return BadRequestResponse(
+                            "User is not active", "user_inactive", request=self.request,
+                        )
+                            
+                else:
+                    return BadRequestResponse(
+                        "Invalid email/password credentials",
+                        "invalid_credentials",
+                        request=self.request,
+                    )
+            else: 
+                return BadRequestResponse(
+                    "Unable to signin",
+                    "signin_error",
+                    data=rcv_ser.errors,
+                    request=self.request,
+                )
         except Exception as e:
+            traceback.print_exc()
             return BadRequestResponse(str(e), "Unknown", request=self.request)
             
                
