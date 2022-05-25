@@ -57,6 +57,7 @@ from .input_serializer import (
     ResendOTPInputSerializer,
     ResendCodeInputSerializer,
     SigninInputSerializer,
+    ResetInputSerializer,
 )
 
 from .model_serializer import (
@@ -439,7 +440,7 @@ class AuthViewset(YkGenericViewSet):
         
     @swagger_auto_schema(
         operation_summary="Signout",
-        operation_description="Sign Out",
+        operation_description="Signout",
         responses={
             200: EmptySerializer(),
             400: BadRequestResponseSerializer(),
@@ -456,4 +457,52 @@ class AuthViewset(YkGenericViewSet):
             return BadRequestResponse(str(e), "Unknown", request=self.request)
             
             
-               
+    @swagger_auto_schema(
+        operation_summary="Reset init",
+        operation_description="Init the reset password",
+        responses={
+            200: EmptySerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_body=ResetInputSerializer(),
+    )        
+    @action(methods=["POST"], detail=False, url_path="reset/init") 
+    
+    def reset_password_init(self, request, *args, **kwargs):
+        try:
+            rcv_ser = ResetInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                email = rcv_ser.validated_data.get("email")
+                user = User.objects.filter(email=email).first()
+                if user:
+                    code = "12345"
+                    TempCode.objects.create(code=code, user=user, type="reset")
+                    
+                    email_encoded = base.url_safe_encode(user.email)
+                    code_encode = base.url_safe_encode(code)
+                    print(base.url_safe_decode(code_encode))
+                    fe_url = settings.FRONTEND_URL
+                    reset_url = (
+                        fe_url + f"/reset/?token={code_encode}&email={email_encoded}"
+                    )
+                    message = {
+                        "subject": _("Reset Password"),
+                        "email": user.email,
+                        "reset_url": fe_url,
+                        "username": user.username,
+                    }
+                    
+                    # TODO Create Apache Kafka Notification
+                return GoodResponse({
+                    "successful"
+                })
+            else:
+                return BadRequestResponse(
+                    "Unable to init the password reset",
+                    "init_reset_error",
+                    data=rcv_ser.errors,
+                    request=self.request,
+                )   
+        except Exception as e:
+            return BadRequestResponse(str(e), "Unknown", request=self.request)                  

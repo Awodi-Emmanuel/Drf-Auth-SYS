@@ -130,6 +130,12 @@ class ValidateOTPInputSerializer(Serializer):
     
     class Meta:
         ref_name = None
+        
+class ResetInputSerializer(Serializer):
+    email = EmailField()
+    
+    class Meta:
+        ref_name = None        
                    
 class ResendOTPInputSerializer(Serializer):
     email = EmailField()
