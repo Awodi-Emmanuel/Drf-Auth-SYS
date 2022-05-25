@@ -1,6 +1,7 @@
 from asyncio import exceptions
 from email import message
 import logging
+import re
 import traceback
 
 from requests import request
@@ -435,5 +436,24 @@ class AuthViewset(YkGenericViewSet):
         except Exception as e:
             traceback.print_exc()
             return BadRequestResponse(str(e), "Unknown", request=self.request)
+        
+    @swagger_auto_schema(
+        operation_summary="Signout",
+        operation_description="Sign Out",
+        responses={
+            200: EmptySerializer(),
+            400: BadRequestResponseSerializer(),
+        },
+        # request_body=UserSerializer(),
+    )
+    @action(methods=["POST"], detail=False,)
+    
+    def signout(self, request, *args, **kwargs):
+        try:
+            logout(self.request)
+            return GoodResponse({})
+        except Exception as e:
+            return BadRequestResponse(str(e), "Unknown", request=self.request)
+            
             
                
