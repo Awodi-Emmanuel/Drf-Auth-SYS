@@ -116,6 +116,14 @@ class SigninInputSerializer(Serializer):
             raise ValidationError(_("(username or email) fields should be present.")) 
         
         return password  
+    
+class ResetWithPassInputSerializer(Serializer):
+    email = EmailField()
+    code = CharField()
+    password = CharField()
+    
+    class Meta:
+        ref_name = None    
         
 class ConfirmInputSerializer(Serializer):
     email = EmailField()

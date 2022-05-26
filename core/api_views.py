@@ -57,6 +57,7 @@ from .input_serializer import (
     ResendCodeInputSerializer,
     SigninInputSerializer,
     ResetInputSerializer,
+    ResetWithPassInputSerializer
 )
 
 from .model_serializer import (
@@ -557,4 +558,26 @@ class AuthViewset(YkGenericViewSet):
                     
             
         except Exception as e:
-            return BadRequestResponse(str(e), "Unknown", request=self.request)                 
+            return BadRequestResponse(str(e), "Unknown", request=self.request)  
+        
+        
+        
+    @swagger_auto_schema(
+        operation_summary="Reset",
+        operation_description="Reset your password",
+        responses={
+            200: UserSerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_bode=ResetWithPassInputSerializer(),
+    )
+    @action(methods=["POST"], detail=False, url_path="reset/complete")
+    
+    def reset_password_complete(self, request, *args, **kwargs):
+        try:
+            rcv_ser = ResetWithPassInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                print(rcv_ser)
+        except Exception as e:
+            return BadRequestResponse(str(e), "Unknow", request=self.request)                  
