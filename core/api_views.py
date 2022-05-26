@@ -578,6 +578,46 @@ class AuthViewset(YkGenericViewSet):
         try:
             rcv_ser = ResetWithPassInputSerializer(data=self.request.data)
             if rcv_ser.is_valid():
-                print(rcv_ser)
+                code = base.url_safe_decode(rcv_ser.validated_data["code"])
+                email = base.url_safe_decode(rcv_ser.validated_data["email"])
+                tmp_code = (
+                    TempCode.objects.filter(
+                        code=code,
+                        user__email=email,
+                        is_used=False,
+                        expires__gte = timezone.now()
+                    )
+                    .select_related()
+                    .first()
+                )
+                if tmp_code:
+                    tmp_code.user.is_active = True
+                    tmp_code.user.set_password(rcv_ser.validated_data["email"])
+                    tmp_code.user.save()
+                    tmp_code.is_used= True
+                    tmp_code.save()
+                    
+                    tpl = "reset"
+                    message = {
+                        "subject": _("Password Reset Confirmation"),
+                        "tpl": tpl
+                    }
+                    
+                    # TODO Create Apache Kafka Notification
+                    user_ser = UserSerializer(tmp_code.user)
+                    return GoodResponse(user_ser.data)
+                else:
+                    return NotFoundResponse(
+                        "Token expired or invalid",
+                        "Invalid_Token",
+                        request=self.request,
+                    )
+            else:
+                return BadRequestResponse(
+                    "Unable to reset, invalid input",
+                    "invalid_data",
+                    data=rcv_ser.errors,
+                    request=self.request 
+                )        
         except Exception as e:
             return BadRequestResponse(str(e), "Unknow", request=self.request)                  
