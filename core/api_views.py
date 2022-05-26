@@ -1,7 +1,5 @@
-from asyncio import exceptions
 from email import message
 import logging
-import re
 import traceback
 
 from requests import request
@@ -17,6 +15,7 @@ from rest_framework.views import APIView
 from django.contrib.auth import login, logout
 import logging
 from django.utils.translation import gettext as _
+from rest_framework import permissions
 from uuid import uuid4
 from datetime import timedelta, datetime
 from rest_framework.viewsets import ViewSet, ModelViewSet, GenericViewSet
@@ -316,7 +315,7 @@ class AuthViewset(YkGenericViewSet):
         },
         request_body=ResendCodeInputSerializer(),
     )     
-    @action(methods=["POST"], detail=False)
+    @action(methods=["POST"], detail=False, permission_classes=[permissions.IsAuthenticated])
     
     def resend(self, request, *args, **kwargs):
         try:
@@ -447,7 +446,7 @@ class AuthViewset(YkGenericViewSet):
         },
         # request_body=UserSerializer(),
     )
-    @action(methods=["POST"], detail=False,)
+    @action(methods=["POST"], detail=False, permission_classes=[permissions.IsAuthenticated],)
     
     def signout(self, request, *args, **kwargs):
         try:
@@ -469,7 +468,7 @@ class AuthViewset(YkGenericViewSet):
     )        
     @action(methods=["POST"], detail=False, url_path="reset/init") 
     
-    def reset_password_init(self, request, *args, **kwargs):
+    def reset_init(self, request, *args, **kwargs):
         try:
             rcv_ser = ResetInputSerializer(data=self.request.data)
             if rcv_ser.is_valid():
@@ -505,4 +504,57 @@ class AuthViewset(YkGenericViewSet):
                     request=self.request,
                 )   
         except Exception as e:
-            return BadRequestResponse(str(e), "Unknown", request=self.request)                  
+            return BadRequestResponse(str(e), "Unknown", request=self.request)     
+        
+    @swagger_auto_schema(
+        operation_summary="Reset Code Check",
+        operation_description="Check if the reset code is valid!",
+        responses={
+            200: UserSerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_body=ConfirmInputSerializer(),
+    )
+    @action(methods=["POST"], detail=False, url_path="reset/validate/token")
+    
+    def reset_password_validate_token(self, request, *args, **kwarg):
+        try:
+            rcv_ser = ConfirmInputSerializer(data=request.data)
+            if rcv_ser.is_valid():
+                token: str = rcv_ser.validated_data["code"]                
+                email: str = rcv_ser.validated_data["email"]
+                
+                token_decoded = base.url_safe_decode(token)
+                email_deoded = base.url_safe_decode(email)
+                
+                tmp_code = (
+                    TempCode.objects.filter(
+                        code=token_decoded,
+                        user__email=email_deoded,
+                        is_used=False,
+                        expires__gte=timezone.now(),
+                    )
+                    .select_related()
+                    .first()
+                )
+                
+                if tmp_code:
+                    tmp_code.user.is_active = False
+                    tmp_code.user.save()
+                    user_ser = UserSerializer(tmp_code.user)
+                    return GoodResponse(user_ser.data)
+                else:
+                    return NotFoundResponse(
+                        "Expired or Invalid Token", "InvalidToken", request=self.request
+                    )
+            else:
+                return BadRequestResponse(
+                    "Unable to check reset code",
+                    "invalid_data",
+                    data=rcv_ser.errors,
+                )
+                    
+            
+        except Exception as e:
+            return BadRequestResponse(str(e), "Unknown", request=self.request)                 
