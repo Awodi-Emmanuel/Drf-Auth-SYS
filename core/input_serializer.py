@@ -117,6 +117,14 @@ class SigninInputSerializer(Serializer):
         
         return password  
     
+class ChangePasswordSerializer(Serializer):
+    old_password = CharField()
+    new_password = CharField()
+    confirmed_password = CharField()
+    
+    class Meta:
+        ref_name = None
+    
 class ResetWithPassInputSerializer(Serializer):
     email = EmailField()
     code = CharField()

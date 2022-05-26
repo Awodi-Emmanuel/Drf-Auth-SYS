@@ -1,5 +1,6 @@
 from email import message
 import logging
+from math import perm
 import traceback
 
 from requests import request
@@ -57,7 +58,8 @@ from .input_serializer import (
     ResendCodeInputSerializer,
     SigninInputSerializer,
     ResetInputSerializer,
-    ResetWithPassInputSerializer
+    ResetWithPassInputSerializer,
+    ChangePasswordSerializer,
 )
 
 from .model_serializer import (
@@ -620,4 +622,61 @@ class AuthViewset(YkGenericViewSet):
                     request=self.request 
                 )        
         except Exception as e:
-            return BadRequestResponse(str(e), "Unknow", request=self.request)                  
+            return BadRequestResponse(str(e), "Unknow", request=self.request)   
+        
+    @swagger_auto_schema(
+        operation_summary="Change Password",
+        operation_description="Change user's password",
+        responses={
+            200: UserSerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_body=ChangePasswordSerializer(),
+    )
+    @action(methods=["POST"], detail=False, permission_classes=[permissions.IsAuthenticated], url_path="password/change",)
+    
+    def Change_password(self, request, *args, **kwargs):
+        try:
+            rcv_ser = ChangePasswordSerializer(data=self.request.data)
+            
+            if rcv_ser.is_valid():
+                old_password = rcv_ser.validated_data["old_password"]
+                new_password = rcv_ser.validated_data["new_password"]
+                confirmed_password = rcv_ser.validated_data["confirmed_password"]
+                
+                if self.request.user.check_password(old_password):
+                    if new_password == confirmed_password:
+                        self.request.user.set_password(new_password)
+                        self.request.user.save()
+                        
+                        message = {
+                            "subject": _("Your Password was Changed"),
+                            "email": self.request.user.email,
+                            "username": self.request.user.username
+                        }
+                        
+                        # TODO Create Apache Kafka Notification
+                        
+                        return GoodResponse(UserSerializer(self.request.user).data)
+                    else:
+                        return BadRequestError(
+                            "New passwords are differents",
+                            "new_password_different",
+                            self.request,
+                        ) 
+                else:
+                    return BadRequestError(
+                        "The old password is invalid",
+                        "old_invalid_password",
+                        self.request,
+                    ) 
+            else:
+                return BadRequestResponse(
+                    "Unable to reset",
+                    "reset_error",
+                    data=rcv_ser.errors,
+                    request=self.request,
+                )                              
+        except Exception as e:
+            return BadRequestResponse(str(e), "Uknown", request=self.request)                          
