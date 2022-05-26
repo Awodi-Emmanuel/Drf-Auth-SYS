@@ -394,3 +394,91 @@ Traceback (most recent call last):
     raise ContentNotRenderedError(
 django.template.response.ContentNotRenderedError: The response content must be rendered before it can be pickled.
 [24/May/2022 11:48:46] ERROR [django.server:187] "GET /api/docs/?format=openapi HTTP/1.1" 500 163977 - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/servers/basehttp.py
+[25/May/2022 09:14:02] ERROR [django.request:241] Internal Server Error: /api/docs/ - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/utils/log.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/views/generic/base.py", line 84, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/views.py", line 94, in get
+    schema = generator.get_schema(request, self.public)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/generators.py", line 246, in get_schema
+    paths, prefix = self.get_paths(endpoints, components, request, public)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/generators.py", line 404, in get_paths
+    operation = self.get_operation(view, path, prefix, method, components, request)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/generators.py", line 432, in get_operation
+    overrides = self.get_overrides(view, method)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/drf_yasg/generators.py", line 483, in get_overrides
+    return copy.deepcopy(overrides)
+  File "/usr/lib/python3.9/copy.py", line 146, in deepcopy
+    y = copier(x, memo)
+  File "/usr/lib/python3.9/copy.py", line 230, in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+  File "/usr/lib/python3.9/copy.py", line 146, in deepcopy
+    y = copier(x, memo)
+  File "/usr/lib/python3.9/copy.py", line 230, in _deepcopy_dict
+    y[deepcopy(key, memo)] = deepcopy(value, memo)
+  File "/usr/lib/python3.9/copy.py", line 161, in deepcopy
+    rv = reductor(4)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/response.py", line 95, in __getstate__
+    state = super().__getstate__()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/template/response.py", line 60, in __getstate__
+    raise ContentNotRenderedError(
+django.template.response.ContentNotRenderedError: The response content must be rendered before it can be pickled.
+[25/May/2022 09:14:02] ERROR [django.server:187] "GET /api/docs/?format=openapi HTTP/1.1" 500 164889 - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/servers/basehttp.py
+[25/May/2022 09:42:49] ERROR [django.request:241] Internal Server Error: /api/v1/auth/signin/ - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/utils/log.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/response.py", line 70, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/renderers.py", line 655, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/renderers.py", line 554, in get_raw_data_form
+    serializer = view.get_serializer()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[25/May/2022 09:42:49] ERROR [django.server:187] "GET /api/v1/auth/signin/ HTTP/1.1" 500 95625 - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/servers/basehttp.py
+[25/May/2022 09:44:52] ERROR [django.request:241] Internal Server Error: /api/v1/auth/resend/ - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/utils/log.py
+Traceback (most recent call last):
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/response.py", line 70, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/renderers.py", line 655, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/renderers.py", line 554, in get_raw_data_form
+    serializer = view.get_serializer()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "/var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/rest_framework/generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'AuthViewset' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+[25/May/2022 09:44:52] ERROR [django.server:187] "GET /api/v1/auth/resend/ HTTP/1.1" 500 95625 - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/servers/basehttp.py

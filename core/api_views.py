@@ -1,4 +1,3 @@
-from asyncio import exceptions
 from email import message
 import logging
 import traceback
@@ -16,6 +15,7 @@ from rest_framework.views import APIView
 from django.contrib.auth import login, logout
 import logging
 from django.utils.translation import gettext as _
+from rest_framework import permissions
 from uuid import uuid4
 from datetime import timedelta, datetime
 from rest_framework.viewsets import ViewSet, ModelViewSet, GenericViewSet
@@ -54,7 +54,10 @@ from .input_serializer import (
     ConfirmInputSerializer,
     ValidateOTPInputSerializer,
     ResendOTPInputSerializer,
-    ResendCodeInputSerializer
+    ResendCodeInputSerializer,
+    SigninInputSerializer,
+    ResetInputSerializer,
+    ResetWithPassInputSerializer
 )
 
 from .model_serializer import (
@@ -313,7 +316,7 @@ class AuthViewset(YkGenericViewSet):
         },
         request_body=ResendCodeInputSerializer(),
     )     
-    @action(methods=["POST"], detail=False)
+    @action(methods=["POST"], detail=False, permission_classes=[permissions.IsAuthenticated])
     
     def resend(self, request, *args, **kwargs):
         try:
@@ -375,4 +378,206 @@ class AuthViewset(YkGenericViewSet):
                 )
             
         except Exception as e:
-            return BadRequestResponse(str(e), "unknow", request=self.request)    
+            return BadRequestResponse(str(e), "Unknown", request=self.request) 
+        
+    @swagger_auto_schema(
+        operation_summary="Signin",
+        operation_description="Sign in with your email",
+        responses={
+            200: EmptySerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_body=SigninInputSerializer(),
+    )
+    
+    @action(methods=["POST"], detail=False)
+    
+    def signin(self, request, *args, **Kwargs):
+        try:
+            rcv_ser = SigninInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                email = rcv_ser.validated_data.get("email")
+                username = rcv_ser.validated_data.get("username")
+                password = rcv_ser.validated_data["password"]
+                user = User.objects.filter(
+                    Q(email=email) | Q(username=username)
+                ).first()
+                if user:
+                    if user.is_active:
+                        if user.check_password(password):
+                            cookie = UserSerializer().get_tokens(user)
+                            return GoodResponse(
+                                UserSerializer(user).data, cookie=cookie
+                            )
+                        else:
+                            return BadRequestResponse(
+                                "Invalid email/password credentials",
+                                "invalid_credentials",
+                                request=self.request,
+                            )
+                    else:
+                        return BadRequestResponse(
+                            "User is not active", "user_inactive", request=self.request,
+                        )
+                            
+                else:
+                    return BadRequestResponse(
+                        "Invalid email/password credentials",
+                        "invalid_credentials",
+                        request=self.request,
+                    )
+            else: 
+                return BadRequestResponse(
+                    "Unable to signin",
+                    "signin_error",
+                    data=rcv_ser.errors,
+                    request=self.request,
+                )
+        except Exception as e:
+            traceback.print_exc()
+            return BadRequestResponse(str(e), "Unknown", request=self.request)
+        
+    @swagger_auto_schema(
+        operation_summary="Signout",
+        operation_description="Signout",
+        responses={
+            200: EmptySerializer(),
+            400: BadRequestResponseSerializer(),
+        },
+        # request_body=UserSerializer(),
+    )
+    @action(methods=["POST"], detail=False, permission_classes=[permissions.IsAuthenticated],)
+    
+    def signout(self, request, *args, **kwargs):
+        try:
+            logout(self.request)
+            return GoodResponse({})
+        except Exception as e:
+            return BadRequestResponse(str(e), "Unknown", request=self.request)
+            
+            
+    @swagger_auto_schema(
+        operation_summary="Reset init",
+        operation_description="Init the reset password",
+        responses={
+            200: EmptySerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_body=ResetInputSerializer(),
+    )        
+    @action(methods=["POST"], detail=False, url_path="reset/init") 
+    
+    def reset_init(self, request, *args, **kwargs):
+        try:
+            rcv_ser = ResetInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                email = rcv_ser.validated_data.get("email")
+                user = User.objects.filter(email=email).first()
+                if user:
+                    code = "12345"
+                    TempCode.objects.create(code=code, user=user, type="reset")
+                    
+                    email_encoded = base.url_safe_encode(user.email)
+                    code_encode = base.url_safe_encode(code)
+                    print(base.url_safe_decode(code_encode))
+                    fe_url = settings.FRONTEND_URL
+                    reset_url = (
+                        fe_url + f"/reset/?token={code_encode}&email={email_encoded}"
+                    )
+                    message = {
+                        "subject": _("Reset Password"),
+                        "email": user.email,
+                        "reset_url": fe_url,
+                        "username": user.username,
+                    }
+                    
+                    # TODO Create Apache Kafka Notification
+                return GoodResponse({
+                    "successful"
+                })
+            else:
+                return BadRequestResponse(
+                    "Unable to init the password reset",
+                    "init_reset_error",
+                    data=rcv_ser.errors,
+                    request=self.request,
+                )   
+        except Exception as e:
+            return BadRequestResponse(str(e), "Unknown", request=self.request)     
+        
+    @swagger_auto_schema(
+        operation_summary="Reset Code Check",
+        operation_description="Check if the reset code is valid!",
+        responses={
+            200: UserSerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_body=ConfirmInputSerializer(),
+    )
+    @action(methods=["POST"], detail=False, url_path="reset/validate/token")
+    
+    def reset_password_validate_token(self, request, *args, **kwarg):
+        try:
+            rcv_ser = ConfirmInputSerializer(data=request.data)
+            if rcv_ser.is_valid():
+                token: str = rcv_ser.validated_data["code"]                
+                email: str = rcv_ser.validated_data["email"]
+                
+                token_decoded = base.url_safe_decode(token)
+                email_deoded = base.url_safe_decode(email)
+                
+                tmp_code = (
+                    TempCode.objects.filter(
+                        code=token_decoded,
+                        user__email=email_deoded,
+                        is_used=False,
+                        expires__gte=timezone.now(),
+                    )
+                    .select_related()
+                    .first()
+                )
+                
+                if tmp_code:
+                    tmp_code.user.is_active = False
+                    tmp_code.user.save()
+                    user_ser = UserSerializer(tmp_code.user)
+                    return GoodResponse(user_ser.data)
+                else:
+                    return NotFoundResponse(
+                        "Expired or Invalid Token", "InvalidToken", request=self.request
+                    )
+            else:
+                return BadRequestResponse(
+                    "Unable to check reset code",
+                    "invalid_data",
+                    data=rcv_ser.errors,
+                )
+                    
+            
+        except Exception as e:
+            return BadRequestResponse(str(e), "Unknown", request=self.request)  
+        
+        
+        
+    @swagger_auto_schema(
+        operation_summary="Reset",
+        operation_description="Reset your password",
+        responses={
+            200: UserSerializer(),
+            400: BadRequestResponseSerializer(),
+            404: NotFoundResponseSerializer(),
+        },
+        request_bode=ResetWithPassInputSerializer(),
+    )
+    @action(methods=["POST"], detail=False, url_path="reset/complete")
+    
+    def reset_password_complete(self, request, *args, **kwargs):
+        try:
+            rcv_ser = ResetWithPassInputSerializer(data=self.request.data)
+            if rcv_ser.is_valid():
+                print(rcv_ser)
+        except Exception as e:
+            return BadRequestResponse(str(e), "Unknow", request=self.request)                  

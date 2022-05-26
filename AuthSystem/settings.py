@@ -148,6 +148,7 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PAGINATION_CLASS": "core.pagination.MetadataPagination",
     "PAGE_SIZE": 100,
+    
 }
 
 FRONTEND_URL = "http://testin.ng"
