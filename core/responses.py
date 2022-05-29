@@ -23,18 +23,24 @@ class GoodResponse(Response):
         self,
         data=None,
         status=None,
+        cookie=None,
         template_name=None,
         headers=None,
         exception=False,
         content_type=None,
+        
     ):
         if isinstance(data, dict):
             new_data = data
         else:
             new_data = {"data": data}
         super().__init__(
-            new_data, status, template_name, headers, exception, content_type
+            new_data, status, template_name, headers, exception, content_type, 
         )
+        
+        if isinstance(cookie, dict) and cookie is not None:
+            self.set_cookie(key="access_token", value=cookie['access'])
+            self.set_cookie(key="refresh_token", value=cookie['refresh'])
         
         
 

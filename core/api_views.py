@@ -208,7 +208,7 @@ class AuthViewset(YkGenericViewSet):
                 tmp_code = (
                     TempCode.objects.filter(
                         code=base.url_safe_decode(rcv_ser.validated_data["otp"]),
-                        email=base.url_safe_decode(rcv_ser.validated_data["email"]),
+                        user__email=base.url_safe_decode(rcv_ser.validated_data["email"]),
                     is_used=False,
                     expires__gte=timezone.now(),    
                     )
@@ -409,6 +409,7 @@ class AuthViewset(YkGenericViewSet):
                     if user.is_active:
                         if user.check_password(password):
                             cookie = UserSerializer().get_tokens(user)
+                            print(cookie)
                             return GoodResponse(
                                 UserSerializer(user).data, cookie=cookie
                             )
