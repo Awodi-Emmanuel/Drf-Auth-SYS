@@ -102,7 +102,7 @@ class SignupInputSerializer(Serializer):
 class SigninInputSerializer(Serializer):
     email = EmailField(required=False, allow_null=True)
     username = CharField(required=False, allow_null=True)
-    Password = CharField()    
+    password = CharField()    
     
     class Meta:
         ref_name = None
@@ -141,7 +141,7 @@ class ConfirmInputSerializer(Serializer):
         ref_name = None   
         
 class ValidateOTPInputSerializer(Serializer):
-    email = EmailField(),
+    email = EmailField()
     otp = CharField()
     
     class Meta:
