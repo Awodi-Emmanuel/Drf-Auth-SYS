@@ -20,13 +20,13 @@ from rest_framework import permissions
 from uuid import uuid4
 from datetime import timedelta, datetime
 from rest_framework.viewsets import ViewSet, ModelViewSet, GenericViewSet
-# from rest_framework.mixins import (
-#     ListModelMixin,
-#     UpdateModelMixin,
-#     DestroyModelMixin,
-#     CreateModelMixin,
-#     RetrieveModelMixin,
-# )
+from rest_framework.mixins import (
+    ListModelMixin,
+    UpdateModelMixin,
+    DestroyModelMixin,
+    CreateModelMixin,
+    RetrieveModelMixin,
+)
 
 from core.models import TempCode
 
@@ -63,7 +63,8 @@ from .input_serializer import (
 )
 
 from .model_serializer import (
-    UserSerializer
+    UserSerializer,
+    ProfileSerializer
 )
 
 from utils import base, crypt
@@ -74,7 +75,35 @@ User = get_user_model()
 
 
 
-class AuthViewset(YkGenericViewSet):
+class AuthViewSet(
+    YkGenericViewSet,
+    ListModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    DestroyModelMixin,
+    CreateModelMixin,
+):
+    # def get_queryset(self):
+    queryset = User.objects.all()
+        # return user
+    serializer_class = ProfileSerializer
+    
+    def get(self, request, *args, **kwargs):
+        
+        return self.list(request, *args, **kwargs)
+    
+    def get(self, request, *args, **kwargs):
+        
+        return self.retrieve(request, *args, **kwargs)
+    def put(self, request, *args, **kwargs):
+        
+        return self.update(request, *args, **kwargs)
+        
+    def delete(self, request, *args, **kwargs):
+        
+        return self.destroy(request, *args, **kwargs)    
+    
+    
     @swagger_auto_schema(
         operation_summary="Signup",
         operation_description="Signup using your email",

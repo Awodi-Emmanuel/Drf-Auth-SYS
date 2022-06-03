@@ -1294,3 +1294,27 @@ Traceback (most recent call last):
     raise ContentNotRenderedError(
 django.template.response.ContentNotRenderedError: The response content must be rendered before it can be pickled.
 [27/May/2022 19:59:24] ERROR [django.server:187] "GET /api/docs/?format=openapi HTTP/1.1" 500 167860 - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/django/core/servers/basehttp.py
+[02/Jun/2022 23:58:44] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[02/Jun/2022 23:58:44] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[02/Jun/2022 23:59:10] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[02/Jun/2022 23:59:10] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:00:27] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:00:27] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:02:18] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:02:18] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:03:39] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:03:39] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:05:34] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:05:34] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:05:36] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:05:36] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:06:16] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:06:16] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:07:50] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:07:50] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:08:47] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:08:47] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:08:52] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:08:52] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:09:26] DEBUG [MARKDOWN:163] Successfully imported extension module "markdown.extensions.toc". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
+[03/Jun/2022 00:09:26] DEBUG [MARKDOWN:126] Successfully loaded extension "markdown.extensions.toc.TocExtension". - /var/www/environments/emmy/Auth-system/lib/python3.9/site-packages/markdown/core.py
